@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="./assets/logon.jpeg">
+    <title>Aru Bonsai</title>
+    <style>
+        /* Reset básico */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Corpo da página */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #3b5d32;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            min-height: 100vh;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Botão de Menu (Hambúrguer) */
+        .menu-container {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            cursor: pointer;
+            z-index: 3;
+            transition: background-color 0.3s ease;
+            padding-block: 10px;
+            padding-block: 10px;
+        }
+
+        .menu {
+            width: 30px;
+            height: 3px;
+            background-color: #ffffff;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .menu::before,
+        .menu::after {
+            content: '';
+            position: absolute;
+            width: 30px;
+            height: 3px;
+            background-color: #fff;
+            transition: all 0.3s ease;
+        }
+
+        .menu::before {
+            top: -10px;
+        }
+
+        .menu::after {
+            top: 10px;
+        }
+
+        /* Estado do menu - transformando o hambúrguer em 'X' branco */
+        .menu-container.active .menu {
+            transform: rotate(45deg);
+            background-color: #fff;
+        }
+
+        .menu-container.active .menu::before {
+            transform: rotate(90deg);
+            top: 0;
+            background-color: #fff; /* Garantindo que o 'X' será totalmente branco */
+        }
+
+        .menu-container.active .menu::after {
+            opacity: 0;
+            background-color: #fff; /* Garantindo que o 'X' será totalmente branco */
+        }
+
+        /* Menu de navegação */
+        .nav-list {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.9);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: background 0.3s ease;
+            opacity: 0;
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .nav-list.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .nav-link {
+            color: #fff;
+            font-size: 24px;
+            text-decoration: none;
+            margin: 15px 0;
+            transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        /* Efeito de animação dos links */
+        .nav-list.active .nav-link {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .nav-list a:nth-child(1) {
+            transition-delay: 0.2s;
+        }
+
+        .nav-list a:nth-child(2) {
+            transition-delay: 0.4s;
+        }
+
+        .nav-list a:nth-child(3) {
+            transition-delay: 0.6s;
+        }
+
+        /* Botão principal */
+        .button {
+            background-color: #ffffff;
+            color: #1f6707;
+            font-weight: bold;
+            padding: 15px 30px;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 16px;
+            z-index: 2;
+            transition: transform 0.3s, box-shadow 0.3s;
+            margin-top: 50px;
+        }
+
+        .button:hover {
+            background: #000000;
+            border: 2px solid black;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+        }
+
+        .button.disabled {
+            pointer-events: none;
+            opacity: 0.5;
+        }
+
+        /* Imagem */
+        .logo {
+            display: block;
+            width: 100%;
+            max-width: 350px;
+            height: auto;
+        }
+
+        /* Container principal */
+        .container {
+            background-color: #26432D;
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 400px;
+            text-align: center;
+            margin: 6px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        /* Overlay que bloqueia interação com o conteúdo atrás */
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1;
+            display: none;
+        }
+
+        .overlay.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <!-- Overlay para bloquear interação com o conteúdo atrás -->
+    <div class="overlay" id="overlay"></div>
+
+    <!-- Menu Hambúrguer -->
+    <div class="menu-container" onclick="toggleMenu()">
+        <div class="menu"></div>
+    </div>
+
+    <!-- Menu Navegação -->
+    <div class="nav-list" id="navList">
+        <a href="http://localhost/Projeto/loginFunc.php" class="nav-link">Login Funcionários</a>
+       
+    </div>
+
+    <!-- Botão principal -->
+    <a href="http://localhost/Projeto/index.php" id="cardapio-button" class="button">CLIQUE AQUI E VEJA O CARDÁPIO</a>
+
+    <!-- Imagem do logo -->
+    <div class="container">
+        <img src="assets/logonovaaru.jpg" alt="Aru Bonsai Sushi Lounge" class="logo">
+    </div>
+
+    <script>
+        function toggleMenu() {
+            const navList = document.getElementById('navList');
+            const menuContainer = document.querySelector('.menu-container');
+            const cardapioButton = document.getElementById('cardapio-button');
+            const overlay = document.getElementById('overlay');
+
+            // Alternar o menu e o overlay
+            navList.classList.toggle('active');
+            menuContainer.classList.toggle('active');
+            overlay.classList.toggle('active');
+
+            // Desabilitar ou habilitar botão do cardápio
+            if (navList.classList.contains('active')) {
+                cardapioButton.classList.add('disabled');
+            } else {
+                cardapioButton.classList.remove('disabled');
+            }
+        }
+    </script>
+</body>
+</html>
