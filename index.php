@@ -60,7 +60,7 @@ $result = $conn->query($sql);
 
     <div >
         <form action="indexbebidas.php" method="post">
-        <button name="cat-bebidas" value="<?php echo 'Bebidas' ?>" class="hover:text-green-600"><li><a href="http://localhost/Projeto/indexbebidas.php">Bedidas</a></li></button>
+        <button name="cat-bebidas" value="<?php echo 'Bebidas' ?>" class="hover:text-green-600"><li><a href="zeus-crf.github.io/arubonsai/indexbebidas.php">Bedidas</a></li></button>
         </form>
     </div> 
     <span class="opacity-50">|</span>
@@ -69,7 +69,7 @@ $result = $conn->query($sql);
     <span class="opacity-50">|</span>
       
     <div >
-        <button class="hover:text-green-600"><li><a href="http://localhost/Projeto/indexsobremasas.php">Sobremesas</a></li></button>
+        <button class="hover:text-green-600"><li><a href="zeus-crf.github.io/arubonsai/indexsobremasas.php">Sobremesas</a></li></button>
     </div> 
     </ul>
 
