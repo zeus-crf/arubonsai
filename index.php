@@ -28,13 +28,6 @@ $result = $conn->query($sql);
         header{
             background-color: #26432D;
         }
-
-        .in{
-            
-        }
-
-        .hr{}
-        
     </style>
 <body>
     <!--HEADER-->
