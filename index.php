@@ -36,7 +36,7 @@ $result = $conn->query($sql);
             <img src="./assets/logon.jpeg" alt="Logo" class="w-32 h-32 rounded-full shadow-lg hover:scale-110 duration-200">
         <h1 class="text-4xl mt-4 mb-2 font-bold text-white">Aru Sushi Lounge</h1>
         
-    <span class="text-white font-medium">Av Automóvel Clube, Santa Cruz da Serra</span>
+    <span class="text-white font-medium">Avenida Automóvel Clube / Santa Cruz da Serra</span>
 
     <div class="bg-green-800 hr px-4 py-1 rounded-lg mt-5"id="date-span">
         <span class="text-white font-medium">Seg á Dom - 18:00 ás 22:00</span>
@@ -60,7 +60,7 @@ $result = $conn->query($sql);
     
     <button class="bg-zinc-900 in text-primary-foreground py-2 px-4 rounded-lg w-32 text-white shadow-md transition duration-300 hover:bg-primary/80 focus:outline-none focus:ring-2 focus:ring-ring hover:bg-green-600/65 valid:">Inicio</button>
     <span class="opacity-50">|</span>
-      
+
     <div >
         <button class="hover:text-green-600"><li><a href="zeus-crf.github.io/arubonsai/indexsobremasas.php">Sobremesas</a></li></button>
     </div> 
@@ -69,12 +69,12 @@ $result = $conn->query($sql);
 
     <!--LINKS-->
 <!--Inicio Menu-->
- 
+
         <div class ="mx-auto max-w-7xl px-2 my-2">
             <h2 class="font-bold text-2xl">Aperitivos</h2>
         </div>
         <div class="container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  gap-7 md:gap-10 mx-auto max-w-7xl px-2 mb-16">
-     <?php if ($result->num_rows > 0): ?>
+        <?php if ($result->num_rows > 0): ?>
             <?php while($row = $result->fetch_assoc()): ?>
                 <!--PRODUTO ITEM-->
                 <div class="flex gap-2">
@@ -124,7 +124,7 @@ $result = $conn->query($sql);
         </div>
 
         <div class="container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  gap-7 md:gap-10 mx-auto max-w-7xl px-2 mb-16">
-     <?php if ($result->num_rows > 0): ?>
+        <?php if ($result->num_rows > 0): ?>
             <?php while($row = $result->fetch_assoc()): ?>
                 <!--PRODUTO ITEM-->
                 <div class="flex gap-2">
